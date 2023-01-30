@@ -1,0 +1,57 @@
+<%- include('partials/header') -%>
+    <!-- <form id="inputForm" action="">
+        <input id="inputField" type="text" name="text" placeholder="Insert your todo here">
+        <button>Submit</button>
+    </form>
+    <ul id="todo-list">
+
+    </ul> -->
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>New Item</h1>
+            <form id="newTodo">
+                <div class="form-group">
+                    <label>Item Text</label>
+                    <input type="text" id="newTodoText" name="text" class="form-control">
+                </div>
+                <button id="addTodoButton" class="btn btn-primary">Create Item</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>To Do Items</h1>
+
+            <ul class="list-group" id="todo-list">
+                <!--  todos.forEach(function(todo){  -->
+                <% for(let todo of todos){ %>
+                    <li class="list-group-item">
+                        <form action="/todos/<%=todo.id%>" method="POST" class="edit-item-form">
+                            <div class="form-group">
+                                <label>Item Text</label>
+                                <input type="text" value="<%= todo.text %>" name="text" class="form-control">
+                            </div>
+                            <button class="btn btn-primary">Update Item</button>
+                            
+                        </form>
+                        <span class="lead">
+                            <%= todo.text %>
+                        </span>
+                        <div class="pull-right">
+                            <!-- <button class="btn btn-sm btn-warning edit-button">Edit</button> -->
+                            <button class="btn btn-warning edit-button"></button>
+                            <form style="display: inline" method="POST" action="/todos/<%=todo.id%>" class="delete-item-form">
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    <% } %>
+            </ul>
+            <a href="/todos/new" class="btn btn-primary">New Item</a>
+        </div>
+    </div>
+
+    <%- include('partials/footer') -%>

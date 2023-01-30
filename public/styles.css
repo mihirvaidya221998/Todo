@@ -1,0 +1,15 @@
+/* .delete{
+    color: red;
+}
+
+span{
+    cursor: pointer;
+}
+
+.completed{
+    text-decoration: line-through;
+} */
+
+.edit-item-form{
+    display: none;
+}
